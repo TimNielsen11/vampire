@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
+        <link th:href="@{/styles/vampire.css}" rel="stylesheet" />
+</head>
+
+<body style = "background-image: url('./images/RedLegacy2.png');">
+<!-- Navigation -->
+<div class="navbar">
+
+  <!-- Center-->
+  <div class="navbar-centered">
+    <a href="#home" class="active"></a>
+   
+   <a href = "http://localhost:8080/testSheet" class="active"> <img src="./images/roseborder.png" width = "150"></a>
+  </div>
+  
+  <!-- Left Side -->
+  <a href = "http://localhost:8080/characterSheet">Character Creation</a>
+  <a href = "http://localhost:8080/CharacterList">Character List</a>
+  
+  <!-- Right Side -->
+  <div class="navbar-right">
+    <a href = "http://localhost:8080/NPCSheet"> NPC  Creation</a>
+    <a href = "http://localhost:8080/NPCList"> NPC  List</a>
+  </div>
+  
+</div>
+  
+</div>
+<h1>Vampire NPC Sheet</h1>
+       
+    <hr/>
+    <form th:action="@{/saveNPC}" th:object="${npcSheet}" method="POST">
+         <div class="flex-container-external">
+            <div class="flex-container-left">
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Name</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nName" id="name-1" th:field="${npcSheet.nName}"  size="12"/>
+                            <label for="name-1"></label>
+
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Chronicle </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nChronicle" id="chronicle-1" th:field="${npcSheet.nChronicle}" value="Enter" size="12" />
+                            <label for="chronicle-1"></label>
+
+                          
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Sire </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nSire" id="sire-1" th:field="${npcSheet.nSire}" value="Enter" size="12" />
+                            <label for="sire-1"></label>
+
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                   
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Concept </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nConcept" id="concept-1" th:field="${npcSheet.nConcept}" value="Enter" size="12" />
+                            <label for="concept-1"></label>
+
+                        
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Motivation </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nMotivation" id="ambition-1" th:field="${npcSheet.nMotivation}" value="Enter" size="12" />
+                            <label for="ambition-1"></label>
+
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Prime Discipline</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nPrimeDiscipline" id="desire-1" th:field="${npcSheet.nPrimeDiscipline}" value="Enter" size="12" />
+                            <label for="desire-1"></label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-right">
+                <!--Third column remains static but can increase width on larger views up to 1000px-->
+
+                <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                <div class="flex-item-left">
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Location</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nLocation" id="predator-1" th:field="${npcSheet.nLocation}" value="Enter" size="12" />
+                            <label for="predator-1"></label>
+
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Clan </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nClan" id="clan-1" th:field="${npcSheet.nClan}" value="Enter" size="12" />
+                            <label for="clan-1"></label>
+
+                         
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Generation </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nGeneration" id="generation-1" th:field="${npcSheet.nGeneration}" value="Enter" size="12" />
+                            <label for="generation-1"></label>
+
+                       
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--Begin Attribute Block-->
+        <h3>Attributes</h3>
+        <hr/>
+        <div class="flex-container-external">
+            <div class="flex-container-left">
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                    <div class="flex-container-column">Physical</div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Strength </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nStrength" id="strength-1" value="1" />
+                            <label for="strength-1"></label>
+
+                            <input type="radio" name="nStrength" id="strength-2" value="2" />
+                            <label for="strength-2"></label>
+
+                            <input type="radio" name="nStrength" id="strength-3" value="3" />
+                            <label for="strength-3"></label>
+
+                            <input type="radio" name="nStrength" id="strength-4" value="4" />
+                            <label for="strength-4"></label>
+
+                            <input type="radio" name="nStrength" id="strength-5" value="5" />
+                            <label for="strength-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                             <div class="flex-container-inner">Dexterity </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nDexterity" id="dexterity-1" value="1" />
+                            <label for="dexterity-1"></label>
+
+                            <input type="radio" name="nDexterity" id="dexterity-2" value="2" />
+                            <label for="strength-2"></label>
+
+                            <input type="radio" name="nDexterity" id="dexterity-3" value="3" />
+                            <label for="dexterity-3"></label>
+
+                            <input type="radio" name="nDexterity" id="dexterity-4" value="4" />
+                            <label for="strength-4"></label>
+
+                            <input type="radio" name="nDexterity" id="dexterity-5" value="5" />
+                            <label for="dexterity-5"></label>
+                        </div>
+                    </div>               
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Stamina </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nStamina" id="stamina-1" value="1" />
+                            <label for="stamina-1"></label>
+
+                            <input type="radio" name="nStamina" id="stamina-2" value="2" />
+                            <label for="stamina-2"></label>
+
+                            <input type="radio" name="nStamina" id="stamina-3" value="3" />
+                            <label for="stamina-3"></label>
+
+                            <input type="radio" name="nStamina" id="stamina-4" value="4" />
+                            <label for="stamina-4"></label>
+
+                            <input type="radio" name="nStamina" id="stamina-5" value="5" />
+                            <label for="stamina-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                    <div class="flex-container-column">Social</div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Charisma</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nCharisma" id="charisma-1" value="1" />
+                            <label for="charisma-1"></label>
+
+                            <input type="radio" name="nCharisma" id="charisma-2" value="2" />
+                            <label for="charisma-2"></label>
+
+                            <input type="radio" name="nCharisma" id="charisma-3" value="3" />
+                            <label for="charisma-3"></label>
+
+                            <input type="radio" name="nCharisma" id="charisma-4" value="4" />
+                            <label for="charisma-4"></label>
+
+                            <input type="radio" name="nCharisma" id="charisma-5" value="5" />
+                            <label for="charisma-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Manipulation </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nManipulation" id="manipulation-1" value="1" />
+                            <label for="manipulation-1"></label>
+
+                            <input type="radio" name="nManipulation" id="manipulation-2" value="2" />
+                            <label for="manipulation-2"></label>
+
+                            <input type="radio" name="nManipulation" id="manipulation-3" value="3" />
+                            <label for="manipulation-3"></label>
+
+                            <input type="radio" name="nManipulation" id="manipulation-4" value="4" />
+                            <label for="manipulation-4"></label>
+
+                            <input type="radio" name="nManipulation" id="manipulation-5" value="5" />
+                            <label for="manipulation-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Composure </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nComposure" id="composure-1" value="1" />
+                            <label for="composure-1"></label>
+
+                            <input type="radio" name="nComposure" id="composure-2" value="2" />
+                            <label for="composure-2"></label>
+
+                            <input type="radio" name="nComposure" id="composure-3" value="3" />
+                            <label for="composure-3"></label>
+
+                            <input type="radio" name="nComposure" id="composure-4" value="4" />
+                            <label for="composure-4"></label>
+
+                            <input type="radio" name="nComposure" id="composure-5" value="5" />
+                            <label for="composure-5"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-right">
+                <!--Third column remains static but can increase width on larger views up to 1000px-->
+
+                <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                <div class="flex-item-left">
+                    <div class="flex-container-column">Mental</div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Intelligence</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nIntelligence" id="intelligence-1" value="1" />
+                            <label for="intelligence-1"></label>
+
+                            <input type="radio" name="nIntelligence" id="intelligence-2" value="2" />
+                            <label for="intelligence-2"></label>
+
+                            <input type="radio" name="nIntelligence" id="intelligence-3" value="3" />
+                            <label for="intelligence-3"></label>
+
+                            <input type="radio" name="nIntelligence" id="intelligence-4" value="4" />
+                            <label for="intelligence-4"></label>
+
+                            <input type="radio" name="nIntelligence" id="intelligence-5" value="5" />
+                            <label for="intelligence-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Wits </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nWits" id="wits-1" value="1" />
+                            <label for="wits-1"></label>
+
+                            <input type="radio" name="nWits" id="wits-2" value="2" />
+                            <label for="wits-2"></label>
+
+                            <input type="radio" name="nWits" id="wits-3" value="3" />
+                            <label for="wits-3"></label>
+
+                            <input type="radio" name="nWits" id="wits-4" value="4" />
+                            <label for="wits-4"></label>
+
+                            <input type="radio" name="nWits" id="wits-5" value="5" />
+                            <label for="wits-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Resolve </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="nResolve" id="resolve-1" value="1" />
+                            <label for="resolve-1"></label>
+
+                            <input type="radio" name="nResolve" id="resolve-2" value="2" />
+                            <label for="Resolve-2"></label>
+
+                            <input type="radio" name="nResolve" id="resolve-3" value="3" />
+                            <label for="resolve-3"></label>
+
+                            <input type="radio" name="nResolve" id="resolve-4" value="4" />
+                            <label for="resolve-4"></label>
+
+                            <input type="radio" name="nResolve" id="resolve-5" value="5" />
+                            <label for="resolve-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--HEALTH AND WILLPOWER STARTS HERE-->
+
+
+        <div style="text-align: center; min-width: 300px;
+        max-width: 900px;">
+            <div class="flex-container-inner">
+                <div class="flex-container-inner" style = "padding-top: 5px;">Health </div>
+                <div class="flex-container-inner">
+                    <input type="radio" name="nHealth" id="health-1" value="1" />
+                    <label for="health-1"></label>
+
+                    <input type="radio" name="nHealth" id="health-2" value="2" />
+                    <label for="health-2"></label>
+
+                    <input type="radio" name="nHealth" id="health-3" value="3" />
+                    <label for="health-3"></label>
+
+                    <input type="radio" name="nHealth" id="health-4" value="4" />
+                    <label for="health-4"></label>
+
+                    <input type="radio" name="nHealth" id="health-5" value="5" />
+                    <label for="health-5"></label>
+
+                    <input type="radio" name="nHealth" id="health-6" value="6" />
+                    <label for="health-6"></label>
+
+                    <input type="radio" name="nHealth" id="health-7" value="7" />
+                    <label for="health-7"></label>
+
+                    <input type="radio" name="nHealth" id="health-8" value="8" />
+                    <label for="health-8"></label>
+
+                    <input type="radio" name="nHealth" id="health-9" value="9" />
+                    <label for="health-9"></label>
+
+                    <input type="radio" name="nHealth" id="health-10" value="10" />
+                    <label for="health-10"></label>
+                </div>
+            </div>
+            <div class="flex-container-inner" style = "padding-top: 5px;">
+                <div class="flex-container-inner">Willpower </div>
+                <div class="flex-container-inner">
+                    <input type="radio" name="nWillpower" id="willpower-1" value="1" />
+                    <label for="willpower-1"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-2" value="2" />
+                    <label for="willpower-2"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-3" value="3" />
+                    <label for="willpower-3"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-4" value="4" />
+                    <label for="willpower-4"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-5" value="5" />
+                    <label for="willpower-5"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-6" value="6" />
+                    <label for="willpower-6"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-7" value="7" />
+                    <label for="willpower-7"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-8" value="8" />
+                    <label for="willpower-8"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-9" value="9" />
+                    <label for="willpower-9"></label>
+
+                    <input type="radio" name="nWillpower" id="willpower-10" value="10" />
+                    <label for="willpower-10"></label>
+                </div>
+            </div>
+        </div>
+
+                 <div class="flex-container-column">
+        <div class="flex-container-column">
+         <div class="flex-container-inner">Merits and Flaws</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nMerit" id="merit-1" th:field="${npcSheet.nMerit}"size=90% height="50"/>
+                            <label for="merit-1"></label>
+
+                        </div>
+   
+         <div class="flex-container-inner">Allies</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nAllies" id="merit-1" th:field="${npcSheet.nAllies}" size=90% height="50"/>
+                            <label for="merit-1"></label>
+
+                        </div>
+       
+         <div class="flex-container-inner">Enemies</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nEnemies" id="merit-1" th:field="${npcSheet.nEnemies}" size=90% height="50"/>
+                            <label for="merit-1"></label>
+
+                        </div>
+        
+         <div class="flex-container-inner">Secrets</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="nSecrets" id="merit-1" th:field="${npcSheet.nSecrets}" size=90% height="50"/>
+                            <label for="merit-1"></label>
+
+                        </div>
+     </div>
+        <input type="hidden" name="id" id="id" />
+        <!-- <input type="hidden" th:value="${id}" th:attr="name='id'"/> -->
+        <!-- I need to add in an invisible input to load the id in thymeleaf so save updates properly -->
+        <input type="submit" value="Update"/>
+    </form>
+<!--     <a th:href="@{/CharacterList}">Back to list</a>--> 
+    <button onclick="window.print();return false;" />Print Character</button>
+</body>
+
+<script th:inline="javascript">
+
+  var radios = document.querySelectorAll('input[type=radio]');
+  console.log('This is radios'+radios); // nodes (input radio buttons) with many points of data including name wh
+  var nameCount = {};
+ 
+  for (var i = 0, name; i < radios.length; i++) {
+    name = radios[i].name;
+    
+    //console.log(name);
+    if (!(name in nameCount)) nameCount[name] = 0;
+    nameCount[name]++;
+  }
+ // console.log('this is nameCount'+nameCount);
+  
+  var radioSelection;
+  var count = 0;  
+  /*<![CDATA[*/
+
+ 
+
+var nameList = [ /*[[${npcSheet.nStrength}]]*/ 'default', /*[[${npcSheet.nDexterity}]]*/ 'default', /*[[${npcSheet.nStamina}]]*/ 'default', /*[[${npcSheet.nCharisma}]]*/ 'default', /*[[${npcSheet.nManipulation}]]*/ 'default', 
+	/*[[${npcSheet.nComposure}]]*/ 'default', /*[[${npcSheet.nIntelligence}]]*/ 'default', /*[[${npcSheet.nWits}]]*/ 'default', /*[[${npcSheet.nResolve}]]*/ 'default', /*[[${npcSheet.nHealth}]]*/ 'default', /*[[${npcSheet.nWillpower}]]*/ 'default'
+	 
+	];
+	//console.log('This is nameList ' + nameList);
+//	 var message = /*[[${survival}]]*/ 'default';
+//	 console.log('This is survival - ' + message);
+	 
+	 
+for (name in nameCount) {
+//var message = /*[[${strength}]]*/ 'default';
+//console.log('check - '+name+ ' ' +nameList[count]);
+
+if(nameList[count] != null){
+radioSelection = document.getElementsByName(name)[nameList[count] -1];
+console.log(radioSelection);
+radioSelection.checked = true;
+}
+count++;
+}
+
+/*]]>*/
+
+
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
+        <link th:href="@{/styles/vampire.css}" rel="stylesheet" />
+</head>
+
+<body style = "background-image: url('./images/RedLegacy2.png');">
+<!-- Navigation -->
+<div class="navbar">
+
+  <!-- Center-->
+  <div class="navbar-centered">
+    <a href="#home" class="active"></a>
+   
+   <a href = "http://localhost:8080/testSheet" class="active"> <img src="./images/roseborder.png" width = "150"></a>
+  </div>
+  
+  <!-- Left Side -->
+  <a href = "http://localhost:8080/characterSheet">Character Creation</a>
+  <a href = "http://localhost:8080/CharacterList">Character List</a>
+  
+  <!-- Right Side -->
+  <div class="navbar-right">
+    <a href = "http://localhost:8080/NPCSheet"> NPC  Creation</a>
+    <a href = "http://localhost:8080/NPCList"> NPC  List</a>
+  </div>
+
+</div>
+  
+        <h1>Vampire NPC List</h1>
+       
+    	
+		
+		<div class="container">
+		
+			
+			
+			<hr/>
+		
+			<table class="table table-bordered table-striped">
+			
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Clan</th>
+						<th>Concept</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="npcSheet: ${npcSheets}">
+						<td th:text="${npcSheet.nName}" />
+						<td th:text="${npcSheet.nClan}" />
+						<td th:text="${npcSheet.nConcept}" />
+						
+						<a th:href="@{/nShowUpdateForm(Id=${npcSheet.Id})}" class="btn btn-info">Update</a>	
+						<a th:href="@{/deleteNPC(Id=${npcSheet.Id})}" class="btn btn-danger ml-2">Delete</a>
+						
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+		
+		  <<span sec:authentication="name">Username</span>
+  <span>Something should be above this</span>
+	</body>
+
+</html>

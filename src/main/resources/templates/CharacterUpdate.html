@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
+        <link th:href="@{/styles/vampire.css}" rel="stylesheet" />
+</head>
+
+<body style = "background-image: url('./images/RedLegacy2.png');">
+
+<body>
+<!-- Navigation -->
+<div class="navbar">
+
+  <!-- Center-->
+  <div class="navbar-centered">
+    <a href="#home" class="active"></a>
+   
+   <a href = "http://localhost:8080/testSheet" class="active"> <img src="./images/roseborder.png" width = "150"></a>
+  </div>
+  
+  <!-- Left Side -->
+  <a href = "http://localhost:8080/characterSheet">Character Creation</a>
+  <a href = "http://localhost:8080/CharacterList">Character List</a>
+  
+  <!-- Right Side -->
+  <div class="navbar-right">
+    <a href = "http://localhost:8080/NPCSheet"> NPC  Creation</a>
+    <a href = "http://localhost:8080/NPCList"> NPC  List</a>
+  </div>
+  
+</div>
+  
+</div>
+<h1>Vampire Character Sheet</h1>
+       
+    <hr/>
+    <form th:action="@{/saveCharacter}" th:object="${charactersheet}" method="POST">
+         <div class="flex-container-external">
+            <div class="flex-container-left">
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Name</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="name" id="name-1" th:field="${charactersheet.name}"  size="12"/>
+                            <label for="name-1"></label>
+
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Chronicle </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="chronicle" id="chronicle-1" th:field="${charactersheet.chronicle}" value="Enter" size="12" />
+                            <label for="chronicle-1"></label>
+
+                          
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Sire </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="sire" id="sire-1" th:field="${charactersheet.sire}" value="Enter" size="12" />
+                            <label for="sire-1"></label>
+
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                   
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Concept </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="concept" id="concept-1" th:field="${charactersheet.concept}" value="Enter" size="12" />
+                            <label for="concept-1"></label>
+
+                        
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Ambition </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="ambition" id="ambition-1" th:field="${charactersheet.ambition}" value="Enter" size="12" />
+                            <label for="ambition-1"></label>
+
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Desire</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="desire" id="desire-1" th:field="${charactersheet.desire}" value="Enter" size="12" />
+                            <label for="desire-1"></label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-right">
+                <!--Third column remains static but can increase width on larger views up to 1000px-->
+
+                <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                <div class="flex-item-left">
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Predator</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="predator" id="predator-1" th:field="${charactersheet.predator}" value="Enter" size="12" />
+                            <label for="predator-1"></label>
+
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Clan </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="clan" id="clan-1" th:field="${charactersheet.clan}" value="Enter" size="12" />
+                            <label for="clan-1"></label>
+
+                         
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Generation </div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="generation" id="generation-1" th:field="${charactersheet.generation}" value="Enter" size="12" />
+                            <label for="generation-1"></label>
+
+                       
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--Begin Attribute Block-->
+        <h3>Attributes</h3>
+        <hr/>
+        <div class="flex-container-external">
+            <div class="flex-container-left">
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                    <div class="flex-container-column">Physical</div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Strength </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="strength" id="strength-1" value="1" />
+                            <label for="strength-1"></label>
+
+                            <input type="radio" name="strength" id="strength-2" value="2" />
+                            <label for="strength-2"></label>
+
+                            <input type="radio" name="strength" id="strength-3" value="3" />
+                            <label for="strength-3"></label>
+
+                            <input type="radio" name="strength" id="strength-4" value="4" />
+                            <label for="strength-4"></label>
+
+                            <input type="radio" name="strength" id="strength-5" value="5" />
+                            <label for="strength-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Dexterity </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="dexterity" id="dexterity-1" value="1" />
+                            <label for="dexterity-1"></label>
+
+                            <input type="radio" name="dexterity" id="dexterity-2" value="2" />
+                            <label for="dexterity-2"></label>
+
+                            <input type="radio" name="dexterity" id="dexterity-3" value="3" />
+                            <label for="dexterity-3"></label>
+
+                            <input type="radio" name="dexterity" id="dexterity-4" value="4" />
+                            <label for="dexterity-4"></label>
+
+                            <input type="radio" name="dexterity" id="dexterity-5" value="5" />
+                            <label for="dexterity-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Stamina </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="stamina" id="stamina-1" value="1" />
+                            <label for="stamina-1"></label>
+
+                            <input type="radio" name="stamina" id="stamina-2" value="2" />
+                            <label for="stamina-2"></label>
+
+                            <input type="radio" name="stamina" id="stamina-3" value="3" />
+                            <label for="stamina-3"></label>
+
+                            <input type="radio" name="stamina" id="stamina-4" value="4" />
+                            <label for="stamina-4"></label>
+
+                            <input type="radio" name="stamina" id="stamina-5" value="5" />
+                            <label for="stamina-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                    <div class="flex-container-column">Social</div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Charisma</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Charisma" id="Charisma-1" value="1" />
+                            <label for="Charisma-1"></label>
+
+                            <input type="radio" name="Charisma" id="Charisma-2" value="2" />
+                            <label for="Charisma-2"></label>
+
+                            <input type="radio" name="Charisma" id="Charisma-3" value="3" />
+                            <label for="Charisma-3"></label>
+
+                            <input type="radio" name="Charisma" id="Charisma-4" value="4" />
+                            <label for="Charisma-4"></label>
+
+                            <input type="radio" name="Charisma" id="Charisma-5" value="5" />
+                            <label for="Charisma-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Manipulation </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Manipulation" id="Manipulation-1" value="1" />
+                            <label for="Manipulation-1"></label>
+
+                            <input type="radio" name="Manipulation" id="Manipulation-2" value="2" />
+                            <label for="Manipulation-2"></label>
+
+                            <input type="radio" name="Manipulation" id="Manipulation-3" value="3" />
+                            <label for="Manipulation-3"></label>
+
+                            <input type="radio" name="Manipulation" id="Manipulation-4" value="4" />
+                            <label for="Manipulation-4"></label>
+
+                            <input type="radio" name="Manipulation" id="Manipulation-5" value="5" />
+                            <label for="Manipulation-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Composure </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Composure" id="Composure-1" value="1" />
+                            <label for="Composure-1"></label>
+
+                            <input type="radio" name="Composure" id="Composure-2" value="2" />
+                            <label for="Composure-2"></label>
+
+                            <input type="radio" name="Composure" id="Composure-3" value="3" />
+                            <label for="Composure-3"></label>
+
+                            <input type="radio" name="Composure" id="Composure-4" value="4" />
+                            <label for="Composure-4"></label>
+
+                            <input type="radio" name="Composure" id="Composure-5" value="5" />
+                            <label for="Composure-5"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-right">
+                <!--Third column remains static but can increase width on larger views up to 1000px-->
+
+                <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                <div class="flex-item-left">
+                    <div class="flex-container-column">Mental</div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Intelligence</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Intelligence" id="Intelligence-1" value="1" />
+                            <label for="Intelligence-1"></label>
+
+                            <input type="radio" name="Intelligence" id="Intelligence-2" value="2" />
+                            <label for="Intelligence-2"></label>
+
+                            <input type="radio" name="Intelligence" id="Intelligence-3" value="3" />
+                            <label for="Intelligence-3"></label>
+
+                            <input type="radio" name="Intelligence" id="Intelligence-4" value="4" />
+                            <label for="Intelligence-4"></label>
+
+                            <input type="radio" name="Intelligence" id="Intelligence-5" value="5" />
+                            <label for="Intelligence-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Wits </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Wits" id="Wits-1" value="1" />
+                            <label for="Wits-1"></label>
+
+                            <input type="radio" name="Wits" id="Wits-2" value="2" />
+                            <label for="Wits-2"></label>
+
+                            <input type="radio" name="Wits" id="Wits-3" value="3" />
+                            <label for="Wits-3"></label>
+
+                            <input type="radio" name="Wits" id="Wits-4" value="4" />
+                            <label for="Wits-4"></label>
+
+                            <input type="radio" name="Wits" id="Wits-5" value="5" />
+                            <label for="Wits-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Resolve </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Resolve" id="Resolve-1" value="1" />
+                            <label for="Resolve-1"></label>
+
+                            <input type="radio" name="Resolve" id="Resolve-2" value="2" />
+                            <label for="Resolve-2"></label>
+
+                            <input type="radio" name="Resolve" id="Resolve-3" value="3" />
+                            <label for="Resolve-3"></label>
+
+                            <input type="radio" name="Resolve" id="Resolve-4" value="4" />
+                            <label for="Resolve-4"></label>
+
+                            <input type="radio" name="Resolve" id="Resolve-5" value="5" />
+                            <label for="Resolve-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--HEALTH AND WILLPOWER STARTS HERE-->
+
+
+        <div style="text-align: center; min-width: 300px;
+        max-width: 900px;">
+            <div class="flex-container-inner">
+                <div class="flex-container-inner" style = "padding-top: 5px;">Health </div>
+                <div class="flex-container-inner">
+                    <input type="radio" name="Health" id="Health-1" value="1" />
+                    <label for="Health-1"></label>
+
+                    <input type="radio" name="Health" id="Health-2" value="2" />
+                    <label for="Health-2"></label>
+
+                    <input type="radio" name="Health" id="Health-3" value="3" />
+                    <label for="Health-3"></label>
+
+                    <input type="radio" name="Health" id="Health-4" value="4" />
+                    <label for="Health-4"></label>
+
+                    <input type="radio" name="Health" id="Health-5" value="5" />
+                    <label for="Health-5"></label>
+
+                    <input type="radio" name="Health" id="Health-6" value="6" />
+                    <label for="Health-6"></label>
+
+                    <input type="radio" name="Health" id="Health-7" value="7" />
+                    <label for="Health-7"></label>
+
+                    <input type="radio" name="Health" id="Health-8" value="8" />
+                    <label for="Health-8"></label>
+
+                    <input type="radio" name="Health" id="Health-9" value="9" />
+                    <label for="Health-9"></label>
+
+                    <input type="radio" name="Health" id="Health-10" value="10" />
+                    <label for="sHealth-10"></label>
+                </div>
+            </div>
+            <div class="flex-container-inner" style = "padding-top: 5px;">
+                <div class="flex-container-inner">Willpower </div>
+                <div class="flex-container-inner">
+                    <input type="radio" name="Willpower" id="Willpower-1" value="1" />
+                    <label for="Willpower-1"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-2" value="2" />
+                    <label for="Willpower-2"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-3" value="3" />
+                    <label for="Willpower-3"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-4" value="4" />
+                    <label for="Willpower-4"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-5" value="5" />
+                    <label for="Willpower-5"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-6" value="6" />
+                    <label for="Willpower-6"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-7" value="7" />
+                    <label for="Willpower-7"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-8" value="8" />
+                    <label for="Willpower-8"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-9" value="9" />
+                    <label for="Willpower-9"></label>
+
+                    <input type="radio" name="Willpower" id="Willpower-10" value="10" />
+                    <label for="Willpower-10"></label>
+                </div>
+            </div>
+        </div>
+
+        <h3>Skills</h3>
+        <hr/>
+        <div class="flex-container-external">
+            <div class="flex-container-left">
+                <div class="flex-item-left">
+                    <!--first column - physical skills-->
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Athletics </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="athletics" id="athletics-1" value="1" />
+                            <label for="athletics-1"></label>
+
+                            <input type="radio" name="athletics" id="athletics-2" value="2" />
+                            <label for="athletics-2"></label>
+
+                            <input type="radio" name="athletics" id="athletics-3" value="3" />
+                            <label for="athletics-3"></label>
+
+                            <input type="radio" name="athletics" id="athletics-4" value="4" />
+                            <label for="athletics-4"></label>
+
+                            <input type="radio" name="athletics" id="athletics-5" value="5" />
+                            <label for="athletics-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Brawl </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="brawl" id="brawl-1" value="1" />
+                            <label for="brawl-1"></label>
+
+                            <input type="radio" name="brawl" id="brawl-2" value="2" />
+                            <label for="brawl-2"></label>
+
+                            <input type="radio" name="brawl" id="brawl-3" value="3" />
+                            <label for="brawl-3"></label>
+
+                            <input type="radio" name="brawl" id="brawl-4" value="4" />
+                            <label for="brawl-4"></label>
+
+                            <input type="radio" name="brawl" id="brawl-5" value="5" />
+                            <label for="brawl-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Craft </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="craft" id="craft-1" value="1" />
+                            <label for="craft-1"></label>
+
+                            <input type="radio" name="craft" id="craft-2" value="2" />
+                            <label for="craft-2"></label>
+
+                            <input type="radio" name="craft" id="craft-3" value="3" />
+                            <label for="craft-3"></label>
+
+                            <input type="radio" name="craft" id="craft-4" value="4" />
+                            <label for="craft-4"></label>
+
+                            <input type="radio" name="craft" id="craft-5" value="5" />
+                            <label for="craft-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Drive </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="drive" id="drive-1" value="1" />
+                            <label for="drive-1"></label>
+
+                            <input type="radio" name="drive" id="drive-2" value="2" />
+                            <label for="drive-2"></label>
+
+                            <input type="radio" name="drive" id="drive-3" value="3" />
+                            <label for="drive-3"></label>
+
+                            <input type="radio" name="drive" id="drive-4" value="4" />
+                            <label for="drive-4"></label>
+
+                            <input type="radio" name="drive" id="drive-5" value="5" />
+                            <label for="drive-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Firearms </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="firearms" id="firearms-1" value="1" />
+                            <label for="firearms-1"></label>
+
+                            <input type="radio" name="firearms" id="firearms-2" value="2" />
+                            <label for="firearms-2"></label>
+
+                            <input type="radio" name="firearms" id="firearms-3" value="3" />
+                            <label for="firearms-3"></label>
+
+                            <input type="radio" name="firearms" id="firearms-4" value="4" />
+                            <label for="firearms-4"></label>
+
+                            <input type="radio" name="firearms" id="firearms-5" value="5" />
+                            <label for="firearms-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Larceny </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="larceny" id="larceny-1" value="1" />
+                            <label for="larceny-1"></label>
+
+                            <input type="radio" name="larceny" id="larceny-2" value="2" />
+                            <label for="larceny-2"></label>
+
+                            <input type="radio" name="larceny" id="larceny-3" value="3" />
+                            <label for="larceny-3"></label>
+
+                            <input type="radio" name="larceny" id="larceny-4" value="4" />
+                            <label for="larceny-4"></label>
+
+                            <input type="radio" name="larceny" id="larceny-5" value="5" />
+                            <label for="larceny-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Melee </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="melee" id="melee-1" value="1" />
+                            <label for="melee-1"></label>
+
+                            <input type="radio" name="melee" id="melee-2" value="2" />
+                            <label for="melee-2"></label>
+
+                            <input type="radio" name="melee" id="melee-3" value="3" />
+                            <label for="melee-3"></label>
+
+                            <input type="radio" name="melee" id="melee-4" value="4" />
+                            <label for="melee-4"></label>
+
+                            <input type="radio" name="melee" id="melee-5" value="5" />
+                            <label for="melee-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Stealth </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="stealth" id="stealth-1" value="1" />
+                            <label for="stealth-1"></label>
+
+                            <input type="radio" name="stealth" id="stealth-2" value="2" />
+                            <label for="stealth-2"></label>
+
+                            <input type="radio" name="stealth" id="stealth-3" value="3" />
+                            <label for="stealth-3"></label>
+
+                            <input type="radio" name="stealth" id="stealth-4" value="4" />
+                            <label for="stealth-4"></label>
+
+                            <input type="radio" name="stealth" id="stealth-5" value="5" />
+                            <label for="stealth-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Survival </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="survival" id="survival-1" value="1" />
+                            <label for="survival-1"></label>
+
+                            <input type="radio" name="survival" id="survival-2" value="2" />
+                            <label for="survival-2"></label>
+
+                            <input type="radio" name="survival" id="survival-3" value="3" />
+                            <label for="survival-3"></label>
+
+                            <input type="radio" name="survival" id="survival-4" value="4" />
+                            <label for="survival-4"></label>
+
+                            <input type="radio" name="survival" id="survival-5" value="5" />
+                            <label for="survival-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px
+                    SECOND COLUMN  -  SOCIAL SKILLS-->
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Animal Ken </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="animalKen" id="animalKen-1" value="1" />
+                            <label for="animalKen-1"></label>
+
+                            <input type="radio" name="animalKen" id="animalKen-2" value="2" />
+                            <label for="animalKen-2"></label>
+
+                            <input type="radio" name="animalKen" id="animalKen-3" value="3" />
+                            <label for="animalKen-3"></label>
+
+                            <input type="radio" name="animalKen" id="animalKen-4" value="4" />
+                            <label for="animalKen-4"></label>
+
+                            <input type="radio" name="animalKen" id="animalKen-5" value="5" />
+                            <label for="animalKen-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Etiquette </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="etiquette" id="etiquette-1" value="1" />
+                            <label for="etiquette-1"></label>
+
+                            <input type="radio" name="etiquette" id="etiquette-2" value="2" />
+                            <label for="etiquette-2"></label>
+
+                            <input type="radio" name="etiquette" id="etiquette-3" value="3" />
+                            <label for="etiquette-3"></label>
+
+                            <input type="radio" name="etiquette" id="etiquette-4" value="4" />
+                            <label for="etiquette-4"></label>
+
+                            <input type="radio" name="etiquette" id="etiquette-5" value="5" />
+                            <label for="etiquette-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Insight </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="insight" id="insight-1" value="1" />
+                            <label for="insight-1"></label>
+
+                            <input type="radio" name="insight" id="insight-2" value="2" />
+                            <label for="insight-2"></label>
+
+                            <input type="radio" name="insight" id="insight-3" value="3" />
+                            <label for="insight-3"></label>
+
+                            <input type="radio" name="insight" id="insight-4" value="4" />
+                            <label for="insight-4"></label>
+
+                            <input type="radio" name="insight" id="insight-5" value="5" />
+                            <label for="insight-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Intimidation </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="intimidation" id="intimidation-1" value="1" />
+                            <label for="intimidation-1"></label>
+
+                            <input type="radio" name="intimidation" id="intimidation-2" value="2" />
+                            <label for="intimidation-2"></label>
+
+                            <input type="radio" name="intimidation" id="intimidation-3" value="3" />
+                            <label for="intimidation-3"></label>
+
+                            <input type="radio" name="intimidation" id="intimidation-4" value="4" />
+                            <label for="intimidation-4"></label>
+
+                            <input type="radio" name="intimidation" id="intimidation-5" value="5" />
+                            <label for="intimidation-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Leadership </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="leadership" id="leadership-1" value="1" />
+                            <label for="leadership-1"></label>
+
+                            <input type="radio" name="leadership" id="leadership-2" value="2" />
+                            <label for="leadership-2"></label>
+
+                            <input type="radio" name="leadership" id="leadership-3" value="3" />
+                            <label for="leadership-3"></label>
+
+                            <input type="radio" name="leadership" id="leadership-4" value="4" />
+                            <label for="leadership-4"></label>
+
+                            <input type="radio" name="strength" id="strength-5" value="5" />
+                            <label for="strength-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Performance </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="performance" id="performance-1" value="1" />
+                            <label for="performance-1"></label>
+
+                            <input type="radio" name="performance" id="performance-2" value="2" />
+                            <label for="performance-2"></label>
+
+                            <input type="radio" name="performance" id="performance-3" value="3" />
+                            <label for="performance-3"></label>
+
+                            <input type="radio" name="performance" id="performance-4" value="4" />
+                            <label for="performance-4"></label>
+
+                            <input type="radio" name="performance" id="performance-5" value="5" />
+                            <label for="performance-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Persuasion </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="persuasion" id="persuasion-1" value="1" />
+                            <label for="persuasion-1"></label>
+
+                            <input type="radio" name="persuasion" id="persuasion-2" value="2" />
+                            <label for="persuasion-2"></label>
+
+                            <input type="radio" name="persuasion" id="persuasion-3" value="3" />
+                            <label for="persuasion-3"></label>
+
+                            <input type="radio" name="persuasion" id="persuasion-4" value="4" />
+                            <label for="persuasion-4"></label>
+
+                            <input type="radio" name="persuasion" id="persuasion-5" value="5" />
+                            <label for="persuasion-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Streetwise </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="streetwise" id="streetwise-1" value="1" />
+                            <label for="streetwise-1"></label>
+
+                            <input type="radio" name="streetwise" id="streetwise-2" value="2" />
+                            <label for="streetwise-2"></label>
+
+                            <input type="radio" name="streetwise" id="streetwise-3" value="3" />
+                            <label for="streetwise-3"></label>
+
+                            <input type="radio" name="streetwise" id="streetwise-4" value="4" />
+                            <label for="streetwise-4"></label>
+
+                            <input type="radio" name="streetwise" id="streetwise-5" value="5" />
+                            <label for="streetwise-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Subterfuge </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="subterfuge" id="subterfuge-1" value="1" />
+                            <label for="subterfuge-1"></label>
+
+                            <input type="radio" name="subterfuge" id="subterfuge-2" value="2" />
+                            <label for="subterfuge-2"></label>
+
+                            <input type="radio" name="subterfuge" id="subterfuge-3" value="3" />
+                            <label for="subterfuge-3"></label>
+
+                            <input type="radio" name="subterfuge" id="subterfuge-4" value="4" />
+                            <label for="subterfuge-4"></label>
+
+                            <input type="radio" name="subterfuge" id="subterfuge-5" value="5" />
+                            <label for="subterfuge-5"></label>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <div class="flex-container-right">
+                <!--Third column remains static but can increase width on larger views up to 1000px
+                THIRD COLUMN  -  MENTAL SKILLS-->
+
+               
+                <div class="flex-item-left">
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Academics</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="academics" id="academics-1" value="1" />
+                            <label for="academics-1"></label>
+
+                            <input type="radio" name="academics" id="academics-2" value="2" />
+                            <label for="academics-2"></label>
+
+                            <input type="radio" name="academics" id="academics-3" value="3" />
+                            <label for="academics-3"></label>
+
+                            <input type="radio" name="academics" id="academics-4" value="4" />
+                            <label for="academics-4"></label>
+
+                            <input type="radio" name="academics" id="academics-5" value="5" />
+                            <label for="academics-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Awareness </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="awareness" id="awareness-1" value="1" />
+                            <label for="awareness-1"></label>
+
+                            <input type="radio" name="awareness" id="awareness-2" value="2" />
+                            <label for="awareness-2"></label>
+
+                            <input type="radio" name="awareness" id="awareness-3" value="3" />
+                            <label for="awareness-3"></label>
+
+                            <input type="radio" name="awareness" id="awareness-4" value="4" />
+                            <label for="awareness-4"></label>
+
+                            <input type="radio" name="awareness" id="awareness-5" value="5" />
+                            <label for="awareness-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Finance </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="finance" id="finance-1" value="1" />
+                            <label for="finance-1"></label>
+
+                            <input type="radio" name="finance" id="finance-2" value="2" />
+                            <label for="finance-2"></label>
+
+                            <input type="radio" name="finance" id="finance-3" value="3" />
+                            <label for="finance-3"></label>
+
+                            <input type="radio" name="finance" id="finance-4" value="4" />
+                            <label for="finance-4"></label>
+
+                            <input type="radio" name="finance" id="finance-5" value="5" />
+                            <label for="finance-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Investigation </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="investigation" id="investigation-1" value="1" />
+                            <label for="investigation-1"></label>
+
+                            <input type="radio" name="investigation" id="investigation-2" value="2" />
+                            <label for="investigation-2"></label>
+
+                            <input type="radio" name="investigation" id="investigation-3" value="3" />
+                            <label for="investigation-3"></label>
+
+                            <input type="radio" name="investigation" id="investigation-4" value="4" />
+                            <label for="investigation-4"></label>
+
+                            <input type="radio" name="investigation" id="investigation-5" value="5" />
+                            <label for="investigation-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Medicine </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="medicine" id="medicine-1" value="1" />
+                            <label for="medicine-1"></label>
+
+                            <input type="radio" name="medicine" id="medicine-2" value="2" />
+                            <label for="medicine-2"></label>
+
+                            <input type="radio" name="medicine" id="medicine-3" value="3" />
+                            <label for="medicine-3"></label>
+
+                            <input type="radio" name="medicine" id="medicine-4" value="4" />
+                            <label for="medicine-4"></label>
+
+                            <input type="radio" name="medicine" id="medicine-5" value="5" />
+                            <label for="medicine-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Occult </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="occult" id="occult-1" value="1" />
+                            <label for="occult-1"></label>
+
+                            <input type="radio" name="occult" id="occult-2" value="2" />
+                            <label for="occult-2"></label>
+
+                            <input type="radio" name="occult" id="occult-3" value="3" />
+                            <label for="occult-3"></label>
+
+                            <input type="radio" name="occult" id="occult-4" value="4" />
+                            <label for="occult-4"></label>
+
+                            <input type="radio" name="occult" id="occult-5" value="5" />
+                            <label for="occult-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Politics </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="politics" id="politics-1" value="1" />
+                            <label for="politics-1"></label>
+
+                            <input type="radio" name="politics" id="politics-2" value="2" />
+                            <label for="politics-2"></label>
+
+                            <input type="radio" name="politics" id="politics-3" value="3" />
+                            <label for="politics-3"></label>
+
+                            <input type="radio" name="politics" id="politics-4" value="4" />
+                            <label for="politics-4"></label>
+
+                            <input type="radio" name="politics" id="politics-5" value="5" />
+                            <label for="politics-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Science </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="science" id="science-1" value="1" />
+                            <label for="science-1"></label>
+
+                            <input type="radio" name="science" id="science-2" value="2" />
+                            <label for="science-2"></label>
+
+                            <input type="radio" name="science" id="science-3" value="3" />
+                            <label for="science-3"></label>
+
+                            <input type="radio" name="science" id="science-4" value="4" />
+                            <label for="science-4"></label>
+
+                            <input type="radio" name="science" id="science-5" value="5" />
+                            <label for="science-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Technology </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="technology" id="technology-1" value="1" />
+                            <label for="technology-1"></label>
+
+                            <input type="radio" name="technology" id="technology-2" value="2" />
+                            <label for="technology-2"></label>
+
+                            <input type="radio" name="technology" id="technology-3" value="3" />
+                            <label for="technology-3"></label>
+
+                            <input type="radio" name="technology" id="technology-4" value="4" />
+                            <label for="technology-4"></label>
+
+                            <input type="radio" name="technology" id="technology-5" value="5" />
+                            <label for="technology-5"></label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <h3>Disciplines</h3>
+        <hr/>
+        <div class="flex-container-external">
+            <div class="flex-container-left">
+                <div class="flex-item-left">
+                    <!--FIRST COLUMN -->
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Animalism</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="animalism" id="animalism-1" value="1" />
+                            <label for="animalism-1"></label>
+
+                            <input type="radio" name="animalism" id="animalism-2" value="2" />
+                            <label for="animalism-2"></label>
+
+                            <input type="radio" name="animalism" id="animalism-3" value="3" />
+                            <label for="animalism-3"></label>
+
+                            <input type="radio" name="animalism" id="animalism-4" value="4" />
+                            <label for="animalism-4"></label>
+
+                            <input type="radio" name="animalism" id="animalism-5" value="5" />
+                            <label for="animalism-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Auspex </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="auspex" id="auspex-1" value="1" />
+                            <label for="auspex-1"></label>
+
+                            <input type="radio" name="auspex" id="auspex-2" value="2" />
+                            <label for="auspex-2"></label>
+
+                            <input type="radio" name="auspex" id="auspex-3" value="3" />
+                            <label for="auspex-3"></label>
+
+                            <input type="radio" name="auspex" id="auspex-4" value="4" />
+                            <label for="auspex-4"></label>
+
+                            <input type="radio" name="auspex" id="auspex-5" value="5" />
+                            <label for="auspex-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner" style ="font-size: 14px;">Blood Sorcery </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="bloodSorcery" id="bloodSorcery-1" value="1" />
+                            <label for="bloodSorcery-1"></label>
+
+                            <input type="radio" name="bloodSorcery" id="bloodSorcery-2" value="2" />
+                            <label for="bloodSorcery-2"></label>
+
+                            <input type="radio" name="bloodSorcery" id="bloodSorcery-3" value="3" />
+                            <label for="bloodSorcery-3"></label>
+
+                            <input type="radio" name="bloodSorcery" id="bloodSorcery-4" value="4" />
+                            <label for="bloodSorcery-4"></label>
+
+                            <input type="radio" name="bloodSorcery" id="bloodSorcery-5" value="5" />
+                            <label for="bloodSorcery-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Celerity </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="celerity" id="celerity-1" value="1" />
+                            <label for="celerity-1"></label>
+
+                            <input type="radio" name="celerity" id="celerity-2" value="2" />
+                            <label for="celerity-2"></label>
+
+                            <input type="radio" name="celerity" id="celerity-3" value="3" />
+                            <label for="celerity-3"></label>
+
+                            <input type="radio" name="celerity" id="celerity-4" value="4" />
+                            <label for="celerity-4"></label>
+
+                            <input type="radio" name="celerity" id="celerity-5" value="5" />
+                            <label for="celerity-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex-item-left">
+                    <!--Second column collapses under first if the width of the viewport is not at least 610px-->
+                  
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Dominate </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="dominate" id="dominate-1" value="1" />
+                            <label for="dominate-1"></label>
+
+                            <input type="radio" name="dominate" id="dominate-2" value="2" />
+                            <label for="dominate-2"></label>
+
+                            <input type="radio" name="dominate" id="dominate-3" value="3" />
+                            <label for="dominate-3"></label>
+
+                            <input type="radio" name="dominate" id="dominate-4" value="4" />
+                            <label for="dominate-4"></label>
+
+                            <input type="radio" name="dominate" id="dominate-5" value="5" />
+                            <label for="dominate-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Fortitude </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="fortitude" id="fortitude-1" value="1" />
+                            <label for="fortitude-1"></label>
+
+                            <input type="radio" name="fortitude" id="fortitude-2" value="2" />
+                            <label for="fortitude-2"></label>
+
+                            <input type="radio" name="fortitude" id="fortitude-3" value="3" />
+                            <label for="fortitude-3"></label>
+
+                            <input type="radio" name="fortitude" id="fortitude-4" value="4" />
+                            <label for="fortitude-4"></label>
+
+                            <input type="radio" name="fortitude" id="fortitude-5" value="5" />
+                            <label for="fortitude-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner"> Obfuscate </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="obfuscate" id="obfuscate-1" value="1" />
+                            <label for="obfuscate-1"></label>
+
+                            <input type="radio" name="obfuscate" id="obfuscate-2" value="2" />
+                            <label for="obfuscate-2"></label>
+
+                            <input type="radio" name="obfuscate" id="obfuscate-3" value="3" />
+                            <label for="obfuscate-3"></label>
+
+                            <input type="radio" name="obfuscate" id="obfuscate-4" value="4" />
+                            <label for="obfuscate-4"></label>
+
+                            <input type="radio" name="obfuscate" id="obfuscate-5" value="5" />
+                            <label for="obfuscate-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Oblivion </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="oblivion" id="oblivion-1" value="1" />
+                            <label for="oblivion-1"></label>
+
+                            <input type="radio" name="oblivion" id="oblivion-2" value="2" />
+                            <label for="oblivion-2"></label>
+
+                            <input type="radio" name="oblivion" id="oblivion-3" value="3" />
+                            <label for="oblivion-3"></label>
+
+                            <input type="radio" name="oblivion" id="oblivion-4" value="4" />
+                            <label for="oblivion-4"></label>
+
+                            <input type="radio" name="oblivion" id="oblivion-5" value="5" />
+                            <label for="oblivion-5"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-right">
+                <!--Third column remains static but can increase width on larger views up to 1000px-->
+
+              
+                <div class="flex-item-left">
+                    
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Potence</div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="potence" id="potence-1" value="1" />
+                            <label for="potence-1"></label>
+
+                            <input type="radio" name="potence" id="potence-2" value="2" />
+                            <label for="potence-2"></label>
+
+                            <input type="radio" name="potence" id="potence-3" value="3" />
+                            <label for="potence-3"></label>
+
+                            <input type="radio" name="potence" id="potence-4" value="4" />
+                            <label for="potence-4"></label>
+
+                            <input type="radio" name="potence" id="potence-5" value="5" />
+                            <label for="potence-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Presence </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="presence" id="presence-1" value="1" />
+                            <label for="presence-1"></label>
+
+                            <input type="radio" name="presence" id="presence-2" value="2" />
+                            <label for="presence-2"></label>
+
+                            <input type="radio" name="presence" id="presence-3" value="3" />
+                            <label for="presence-3"></label>
+
+                            <input type="radio" name="presence" id="presence-4" value="4" />
+                            <label for="presence-4"></label>
+
+                            <input type="radio" name="presence" id="presence-5" value="5" />
+                            <label for="presence-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Protean </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="protean" id="protean-1" value="1" />
+                            <label for="protean-1"></label>
+
+                            <input type="radio" name="protean" id="protean-2" value="2" />
+                            <label for="protean-2"></label>
+
+                            <input type="radio" name="protean" id="protean-3" value="3" />
+                            <label for="protean-3"></label>
+
+                            <input type="radio" name="protean" id="protean-4" value="4" />
+                            <label for="protean-4"></label>
+
+                            <input type="radio" name="protean" id="protean-5" value="5" />
+                            <label for="protean-5"></label>
+                        </div>
+                    </div>
+                    <div class="flex-container-inner">
+                        <div class="flex-container-inner">Alchemy </div>
+                        <div class="flex-container-inner">
+                            <input type="radio" name="Alchemy" id="Alchemy-1" value="1" />
+                            <label for="Alchemy-1"></label>
+
+                            <input type="radio" name="Alchemy" id="Alchemy-2" value="2" />
+                            <label for="Alchemy-2"></label>
+
+                            <input type="radio" name="Alchemy" id="Alchemy-3" value="3" />
+                            <label for="Alchemy-3"></label>
+
+                            <input type="radio" name="Alchemy" id="Alchemy-4" value="4" />
+                            <label for="Alchemy-4"></label>
+
+                            <input type="radio" name="Alchemy" id="Alchemy-5" value="5" />
+                            <label for="Alchemy-5"></label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+         <h3>Additional</h3>
+        <hr/>
+         <div style="text-align: center; min-width: 300px;
+        max-width: 900px;">
+            <div class="flex-container-inner">
+                <div class="flex-container-inner" style = "padding-top: 5px;">Humanity </div>
+                <div class="flex-container-inner">
+                    <input type="radio" name="humanity" id="humanity-1" value="1" />
+                    <label for="humanity-1"></label>
+
+                    <input type="radio" name="humanity" id="humanity-2" value="2" />
+                    <label for="humanity-2"></label>
+
+                    <input type="radio" name="humanity" id="humanity-3" value="3" />
+                    <label for="humanity-3"></label>
+
+                    <input type="radio" name="humanity" id="humanity-4" value="4" />
+                    <label for="humanity-4"></label>
+
+                    <input type="radio" name="humanity" id="humanity-5" value="5" />
+                    <label for="humanity-5"></label>
+
+                    <input type="radio" name="humanity" id="humanity-6" value="6" />
+                    <label for="humanity-6"></label>
+
+                    <input type="radio" name="humanity" id="humanity-7" value="7" />
+                    <label for="humanity-7"></label>
+
+                    <input type="radio" name="humanity" id="humanity-8" value="8" />
+                    <label for="humanity-8"></label>
+
+                    <input type="radio" name="humanity" id="humanity-9" value="9" />
+                    <label for="humanity-9"></label>
+
+                    <input type="radio" name="humanity" id="humanity-10" value="10" />
+                    <label for="humanity-10"></label>
+                </div>
+            </div>
+         <div class="flex-container-external">
+         <div class="flex-container-inner">Merits and Flaws</div>
+                        <div class="flex-container-inner">
+                            <input type="text" name="merit" id="merit-1" value="Please enter custom values here" size="400"/>
+                            <label for="merit-1"></label>
+
+                        </div>
+        </div>
+        <input type="hidden" name="id" id="id" />
+        <!-- <input type="hidden" th:value="${id}" th:attr="name='id'"/> -->
+        <!-- I need to add in an invisible input to load the id in thymeleaf so save updates properly -->
+        <input type="submit" value="Update"/>
+    </form>
+<!--     <a th:href="@{/CharacterList}">Back to list</a>--> 
+    <button onclick="window.print();return false;" />Print Character</button>
+</body>
+
+<script th:inline="javascript">
+
+  var radios = document.querySelectorAll('input[type=radio]');
+  console.log('This is radios'+radios); // nodes (input radio buttons) with many points of data including name wh
+  var nameCount = {};
+ 
+  for (var i = 0, name; i < radios.length; i++) {
+    name = radios[i].name;
+    
+    //console.log(name);
+    if (!(name in nameCount)) nameCount[name] = 0;
+    nameCount[name]++;
+  }
+ // console.log('this is nameCount'+nameCount);
+  
+  var radioSelection;
+  var count = 0;  
+  /*<![CDATA[*/
+
+ 
+
+var nameList = [ /*[[${charactersheet.strength}]]*/ 'default', /*[[${charactersheet.dexterity}]]*/ 'default', /*[[${charactersheet.stamina}]]*/ 'default', /*[[${charactersheet.charisma}]]*/ 'default', /*[[${charactersheet.manipulation}]]*/ 'default', 
+	/*[[${charactersheet.composure}]]*/ 'default', /*[[${charactersheet.intelligence}]]*/ 'default', /*[[${charactersheet.wits}]]*/ 'default', /*[[${charactersheet.resolve}]]*/ 'default', /*[[${charactersheet.health}]]*/ 'default', /*[[${charactersheet.willpower}]]*/ 'default',
+	/*[[${charactersheet.athletics}]]*/ 'default', /*[[${charactersheet.brawl}]]*/ 'default', /*[[${charactersheet.craft}]]*/ 'default', /*[[${charactersheet.drive}]]*/ 'default', /*[[${charactersheet.firearms}]]*/ 'default', /*[[${charactersheet.larceny}]]*/ 'default', /*[[${charactersheet.melee}]]*/ 'default',
+	/*[[${charactersheet.stealth}]]*/ 'default', /*[[${charactersheet.survival}]]*/ 'default', /*[[${charactersheet.animalKen}]]*/ 'default', /*[[${charactersheet.etiquette}]]*/ 'default', /*[[${charactersheet.insight}]]*/ 'default', /*[[${charactersheet.intimidation}]]*/ 'default', 
+	/*[[${charactersheet.leadership}]]*/ 'default', /*[[${charactersheet.performance}]]*/ 'default', /*[[${charactersheet.persuasion}]]*/ 'default',/*[[${charactersheet.streetwise}]]*/ 'default', /*[[${charactersheet.subterfuge}]]*/ 'default', /*[[${charactersheet.academics}]]*/ 'default',
+	/*[[${charactersheet.awareness}]]*/ 'default', /*[[${charactersheet.finance}]]*/ 'default', /*[[${charactersheet.investigation}]]*/ 'default', /*[[${charactersheet.medicine}]]*/ 'default', /*[[${charactersheet.occult}]]*/ 'default', /*[[${charactersheet.politics}]]*/ 'default',
+	 /*[[${charactersheet.science}]]*/ 'default', /*[[${charactersheet.technology}]]*/ 'default', /*[[${charactersheet.animalism}]]*/ 'default', /*[[${charactersheet.auspex}]]*/ 'default', /*[[${charactersheet.bloodSorcery}]]*/ 'default', /*[[${charactersheet.celerity}]]*/ 'default',
+	 /*[[${charactersheet.dominate}]]*/ 'default', /*[[${charactersheet.fortitude}]]*/ 'default', /*[[${charactersheet.obfuscate}]]*/ 'default', /*[[${charactersheet.oblivion}]]*/ 'default', /*[[${charactersheet.potence}]]*/ 'default', /*[[${charactersheet.presence}]]*/ 'default',
+	 /*[[${charactersheet.protean}]]*/ 'default', /*[[${charactersheet.alchemy}]]*/ 'default', /*[[${charactersheet.humanity}]]*/ 'default', /*[[${charactersheet.merit}]]*/ 'default'
+	];
+	//console.log('This is nameList ' + nameList);
+//	 var message = /*[[${survival}]]*/ 'default';
+//	 console.log('This is survival - ' + message);
+	 
+	 
+for (name in nameCount) {
+//var message = /*[[${strength}]]*/ 'default';
+//console.log('check - '+name+ ' ' +nameList[count]);
+
+if(nameList[count] != null){
+radioSelection = document.getElementsByName(name)[nameList[count] -1];
+console.log(radioSelection);
+radioSelection.checked = true;
+}
+count++;
+}
+
+/*]]>*/
+
+
+</script>
+
+</html>
+
+<!--
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Add Employee</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		
+		<div class="container">
+		
+			<h3>Add New Employee</h3>
+			<hr/>
+			
+			<form th:action="@{/saveCharacter}" th:object="${charactersheet}" method="POST">
+				
+				<input type="text" th:field="${charactersheet.name}" class="form-control col-4 mb-4" placeholder="Enter Name" />
+				
+				<input type="text" th:field="${charactersheet.clan}" class="form-control col-4 mb-4" placeholder="Enter Clan" />
+				
+				<input type="text" th:field="${charactersheet.concept}" class="form-control col-4 mb-4" placeholder="Enter Concept" />
+				
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+				<input type="hidden" th:field="*{Id}" />
+			</form>
+			<hr/>
+			<a th:href="@{/CharacterList}">Back to list</a>
+		</div>
+		
+	</body>
+</html>
+-->

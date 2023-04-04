@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<link th:href="@{/styles/vampire.css}" rel="stylesheet" />
+   
+</head>
+
+<body style = "background-image: url('./images/RedLegacy2.png');">
+<!-- Navigation -->
+<div class="navbar">
+
+  <!-- Center-->
+  <div class="navbar-centered">
+    <a href="#home" class="active"></a>
+   
+   <a href = "http://localhost:8080/testSheet" class="active"> <img src="./images/roseborder.png" width = "150"></a>
+  </div>
+  
+  <!-- Left Side -->
+  <a href = "http://localhost:8080/characterSheet">Character Creation</a>
+  <a href = "http://localhost:8080/CharacterList">Character List</a>
+  
+  <!-- Right Side -->
+  <div class="navbar-right">
+    <a href = "http://localhost:8080/NPCSheet"> NPC  Creation</a>
+    <a href = "http://localhost:8080/NPCList"> NPC  List</a>
+  </div>
+
+</div>
+  
+        <h1>Vampire Character List</h1>
+       
+    	
+		
+		<div >
+		
+			
+			
+			<hr/>
+			
+	<div class = "flex-container-column"> Current Username: <span sec:authentication="name"></span></div>
+			<table >
+			
+				<thead>
+				
+					<tr>
+						<th>Name</th>
+						<th>Clan</th>
+						<th>Concept</th>
+						<th>Update/View </th>
+						<th>Delete</th>
+					</tr>
+					
+				</thead>
+				<tbody>
+				
+					<tr th:each="charactersheet: ${charactersheets}">
+						<td th:text="${charactersheet.name}" />
+						<td th:text="${charactersheet.clan}" />
+						<td th:text="${charactersheet.concept}" />
+						<td>
+						<a th:href="@{/showUpdateForm(Id=${charactersheet.id})}" class="buttonize">Update</a>	
+						</td>
+						<td>
+						<a th:href="@{/deleteCharacter(Id=${charactersheet.id})}" class="buttonize">Delete</a>
+						</td>
+					</tr>
+				
+				</tbody>
+				
+			</table>
+		</div>
+		
+	
+  
+	</body>
+
+</html>
